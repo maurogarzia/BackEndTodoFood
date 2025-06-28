@@ -18,7 +18,7 @@ import java.io.Serializable;
 @Getter
 public abstract class Base implements Serializable {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     protected Long id;
 
     //Getters y setters

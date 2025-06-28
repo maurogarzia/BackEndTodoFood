@@ -18,7 +18,6 @@ public class PromotionDetails extends Base{
     private LocalDate finallyDate;
     @Column(name = "descripcion")
     private String description;
-    @ManyToOne
     @Column(name = "descuento_aplicado")
     private Float discount;
 

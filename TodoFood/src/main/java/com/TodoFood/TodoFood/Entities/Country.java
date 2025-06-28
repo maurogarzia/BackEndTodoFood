@@ -1,5 +1,6 @@
 package com.TodoFood.TodoFood.Entities;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Table;
 import lombok.Getter;
@@ -10,6 +11,7 @@ import lombok.Setter;
 @Setter
 @Getter
 public class Country extends Base {
+    @Column(name = "nombre")
     private String name;
 
     //Getters y setters

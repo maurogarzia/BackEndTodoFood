@@ -1,8 +1,9 @@
 package com.TodoFood.TodoFood.Repositories;
 
 import com.TodoFood.TodoFood.Entities.Promotion;
+import com.TodoFood.TodoFood.Entities.PromotionDetails;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public interface PromotionDetailsRepository extends BaseRepository<Promotion, Long>{
+public interface PromotionDetailsRepository extends BaseRepository<PromotionDetails, Long>{
 }

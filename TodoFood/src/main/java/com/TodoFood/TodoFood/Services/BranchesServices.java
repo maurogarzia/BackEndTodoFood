@@ -5,9 +5,9 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Service;
 
 @Service
-public class BranchesRepository extends BaseService<Branches>{
+public class BranchesServices extends BaseService<Branches>{
 
-    public BranchesRepository(JpaRepository<Branches, Long> baseRepository) {
+    public BranchesServices(JpaRepository<Branches, Long> baseRepository) {
         super(baseRepository);
     }
 }

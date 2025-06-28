@@ -2,9 +2,13 @@ package com.TodoFood.TodoFood.Entities;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
+import lombok.Getter;
+import lombok.Setter;
 
 @Entity
 @Table(name = "Detalle_Factura")
+@Setter
+@Getter
 public class BillDetails extends Base {
     @ManyToOne
     @JoinColumn(name = "producto_id")

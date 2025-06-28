@@ -1,5 +1,6 @@
 package com.TodoFood.TodoFood.Controllers;
 
+import com.TodoFood.TodoFood.Entities.Base;
 import com.TodoFood.TodoFood.Services.BaseService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -37,7 +38,7 @@ public abstract class BaseController <E> {
 
     // Create
     @PostMapping
-    public ResponseEntity<E> create(E entity){
+    public ResponseEntity<E> create(@RequestBody E entity){
         try{
             E newEntity = baseService.save(entity);
             return ResponseEntity.status(201).body(newEntity);
@@ -47,12 +48,19 @@ public abstract class BaseController <E> {
     }
 
     @PutMapping("/{id}")
-    // Update
-    public ResponseEntity<E> update(@PathVariable Long id,@RequestBody E newEntity) {
-        try{
-            E updatedEntity = baseService.update(id, newEntity);
-            return ResponseEntity.ok(newEntity);
-        }catch(Exception e){
+    public ResponseEntity<E> update(@PathVariable Long id, @RequestBody E newEntity) {
+        try {
+            if (newEntity instanceof Base baseEntity){ // Si newEntity es una insatncia de base
+                baseEntity.setId(id); // Se fuerza el id del path
+            }
+            E findEntity = baseService.findById(id);
+            if (findEntity == null){
+                return ResponseEntity.notFound().build();
+            }
+            E updateEntity = baseService.update(id, newEntity);
+            return ResponseEntity.ok(updateEntity);
+
+        } catch (Exception e) {
             return ResponseEntity.internalServerError().build();
         }
     }

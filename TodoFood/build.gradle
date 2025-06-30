@@ -38,6 +38,9 @@ dependencies {
 
 	implementation 'org.hibernate:hibernate-core:6.0.0.Final'  // Actualiza a la versión 6.x
 
+	//Cloudinary
+	implementation 'com.cloudinary:cloudinary-http44:1.34.0'
+
 
 }
 

@@ -1,8 +1,6 @@
 package com.TodoFood.TodoFood.Entities;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -13,6 +11,10 @@ import lombok.Setter;
 public class Province extends Base {
     @Column(name = "nombre")
     private String name;
+
+    @ManyToOne
+    @JoinColumn(name = "id_pais")
+    private Country country;
     //Getter y setter
 
     public String getName() {
@@ -21,5 +23,13 @@ public class Province extends Base {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public Country getCountry() {
+        return country;
+    }
+
+    public void setCountry(Country country) {
+        this.country = country;
     }
 }

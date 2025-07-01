@@ -15,6 +15,10 @@ import lombok.Setter;
 public class User extends Base{
     @Column(name = "nombre")
     private String name;
+    @Column(name = "apellido")
+    private String lastname;
+    @Column(name = "nombre_usuario")
+    private String username;
     @Column(name = "contrasenia")
     private String password;
     @Column(name = "rol")

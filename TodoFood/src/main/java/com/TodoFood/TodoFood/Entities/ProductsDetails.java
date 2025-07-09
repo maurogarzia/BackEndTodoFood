@@ -19,7 +19,7 @@ public class ProductsDetails extends Base{
     @JoinColumn(name = "tamanio_id")
     private Size size;
 
-    @OneToOne
+    @ManyToOne
     @JoinColumn(name = "imagen_id")
     private Image image;
 

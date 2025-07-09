@@ -1,22 +1,18 @@
 package com.TodoFood.TodoFood.Entities;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.Table;
-import lombok.Getter;
-import lombok.Setter;
+import jakarta.persistence.*;
+
 
 @Entity
 @Table(name = "Direccion")
-@Setter
-@Getter
+
 public class Address extends Base {
     @Column(name = "calle")
     private String street;
     @Column(name = "numero")
     private Integer number;
 
+    @ManyToOne
     @JoinColumn(name = "localidad_id")
     private Locality locality;
 

@@ -10,8 +10,7 @@ import lombok.Setter;
 
 @Entity
 @Table(name = "Usuario")
-@Getter
-@Setter
+
 public class User extends Base{
     @Column(name = "nombre")
     private String name;

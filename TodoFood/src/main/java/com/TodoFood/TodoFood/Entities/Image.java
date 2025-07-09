@@ -8,8 +8,7 @@ import lombok.Setter;
 
 @Entity
 @Table(name = "Imagen")
-@Setter
-@Getter
+
 public class Image extends Base{
     @Column(name = "url")
     private String url;

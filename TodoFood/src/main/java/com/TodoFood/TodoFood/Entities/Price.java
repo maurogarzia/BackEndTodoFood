@@ -8,8 +8,7 @@ import lombok.Setter;
 
 @Entity
 @Table(name = "Precio")
-@Setter
-@Getter
+
 public class Price extends Base{
     @Column(name = "precio_venta")
     private Float salesPrice;

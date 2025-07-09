@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping("/tofoFood/address")
+@RequestMapping("/todoFood/address")
 public class AddressController extends BaseController<Address>{
 
     public AddressController(AddressService addressService) {

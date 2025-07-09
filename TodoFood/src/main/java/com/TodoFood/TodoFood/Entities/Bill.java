@@ -10,8 +10,7 @@ import java.util.List;
 
 @Entity
 @Table(name = "Factura")
-@Setter
-@Getter
+
 public class Bill extends Base{
     @Column(name = "total")
     private Double total;

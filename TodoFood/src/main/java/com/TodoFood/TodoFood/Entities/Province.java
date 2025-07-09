@@ -6,8 +6,7 @@ import lombok.Setter;
 
 @Entity
 @Table(name = "Provincia")
-@Setter
-@Getter
+
 public class Province extends Base {
     @Column(name = "nombre")
     private String name;

@@ -8,8 +8,7 @@ import lombok.Setter;
 
 @Entity
 @Table(name = "Tamanio")
-@Setter
-@Getter
+
 public class Size extends Base{
     @Column(name = "nombre")
     private String name;

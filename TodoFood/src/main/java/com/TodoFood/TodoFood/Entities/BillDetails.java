@@ -7,8 +7,7 @@ import lombok.Setter;
 
 @Entity
 @Table(name = "Detalle_Factura")
-@Setter
-@Getter
+
 public class BillDetails extends Base {
     @ManyToOne
     @JoinColumn(name = "producto_id")

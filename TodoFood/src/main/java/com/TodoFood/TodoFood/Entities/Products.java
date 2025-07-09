@@ -1,27 +1,23 @@
 package com.TodoFood.TodoFood.Entities;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
 
+import java.util.List;
+
 @Entity
 @Table(name = "Productos")
-@Setter
-@Getter
+
 
 public class Products extends Base {
 
     @Column(name = "nombre")
     private String name;
 
+    @ManyToOne
     @JoinColumn(name = "categoria_id")
     private Category category;
-
-    @JoinColumn(name = "detalles")
-    private ProductsDetails details;
 
     //Getters y Setters
 
@@ -33,9 +29,7 @@ public class Products extends Base {
         return category;
     }
 
-    public ProductsDetails getDetails() {
-        return details;
-    }
+
 
     public void setName(String name) {
         this.name = name;
@@ -45,7 +39,5 @@ public class Products extends Base {
         this.category = category;
     }
 
-    public void setDetails(ProductsDetails details) {
-        this.details = details;
-    }
+
 }

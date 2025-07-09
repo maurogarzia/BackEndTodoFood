@@ -1,16 +1,17 @@
 package com.TodoFood.TodoFood.Entities;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
 
 @Entity
 @Table(name = "Sucursales")
-@Setter
-@Getter
+
 public class Branches extends Base {
+    @Column(name = "nombre")
+    private String name;
+
+    @OneToOne
     @JoinColumn(name = "direccion_id")
     private Address address;
 
@@ -22,5 +23,13 @@ public class Branches extends Base {
 
     public void setAddress(Address address) {
         this.address = address;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
     }
 }

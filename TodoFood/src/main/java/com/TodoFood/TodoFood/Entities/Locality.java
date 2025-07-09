@@ -6,8 +6,7 @@ import lombok.Setter;
 
 @Entity
 @Table(name = "Localidad")
-@Setter
-@Getter
+
 public class Locality extends Base{
     @Column(name = "nombre")
     private String name;

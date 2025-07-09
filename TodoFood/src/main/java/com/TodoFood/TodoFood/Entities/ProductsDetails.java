@@ -6,8 +6,7 @@ import lombok.Setter;
 
 @Entity
 @Table(name = "detalle_producto")
-@Setter
-@Getter
+
 public class ProductsDetails extends Base{
     @Column(name = "stock")
     private Integer stock;
@@ -23,6 +22,10 @@ public class ProductsDetails extends Base{
     @OneToOne
     @JoinColumn(name = "imagen_id")
     private Image image;
+
+    @ManyToOne
+    @JoinColumn(name = "producto_id")
+    private Products product;
 
     // Setters y Getters
 
@@ -42,6 +45,10 @@ public class ProductsDetails extends Base{
         return image;
     }
 
+    public Products getProduct() {
+        return product;
+    }
+
     public void setStock(Integer stock) {
         this.stock = stock;
     }
@@ -56,5 +63,9 @@ public class ProductsDetails extends Base{
 
     public void setImage(Image image) {
         this.image = image;
+    }
+
+    public void setProduct(Products product) {
+        this.product = product;
     }
 }

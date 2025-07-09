@@ -8,8 +8,7 @@ import lombok.Setter;
 
 @Entity
 @Table(name = "Categoria")
-@Setter
-@Getter
+
 public class Category extends Base {
     @Column(name = "nombre")
     private String name;

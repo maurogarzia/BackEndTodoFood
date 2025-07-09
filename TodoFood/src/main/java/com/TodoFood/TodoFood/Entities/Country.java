@@ -8,8 +8,7 @@ import lombok.Setter;
 
 @Entity
 @Table(name = "Pais")
-@Setter
-@Getter
+
 public class Country extends Base {
     @Column(name = "nombre")
     private String name;

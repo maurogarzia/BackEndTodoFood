@@ -24,6 +24,7 @@ public class Promotion extends Base{
     @JoinColumn(name = "precio_promocional") // Precio que se calculara
     private Price price;
 
+
     @ManyToMany
     @JoinTable(
             name = "promocion_detalleProducto",
@@ -59,6 +60,10 @@ public class Promotion extends Base{
         return price;
     }
 
+    public String getName() {
+        return name;
+    }
+
     public List<ProductsDetails> getDetails() {
         return details;
     }
@@ -87,6 +92,10 @@ public class Promotion extends Base{
         this.price = price;
     }
 
+    public void setName(String name) {
+        this.name = name;
+    }
+
     public void setDetails(List<ProductsDetails> details) {
         this.details = details;
     }
@@ -101,9 +110,9 @@ public class Promotion extends Base{
         Float totalPurchasePrice = 0.0f;
         Float totalSalesPrice = 0.0f;
 
-        for (ProductsDetails detail : details){
-            totalPurchasePrice += detail.getPrice().getPurchasePrice();
-            totalSalesPrice += detail.getPrice().getSalesPrice();
+        for (ProductsDetails detailsProduct : details) {
+            totalSalesPrice += detailsProduct.getPrice().getSalesPrice();
+            totalPurchasePrice += detailsProduct.getPrice().getPurchasePrice();
         }
 
         Float discountedPrice = totalSalesPrice * (1 - discount / 100);

@@ -20,7 +20,7 @@ public class Promotion extends Base{
     @Column(name = "descuento_aplicado")
     private Float discount;
 
-    @OneToOne
+    @ManyToOne
     @JoinColumn(name = "precio_promocional") // Precio que se calculara
     private Price price;
 
@@ -104,15 +104,21 @@ public class Promotion extends Base{
         this.image = image;
     }
 
-    //Metodo para calcular el precio
+//    //Metodo para calcular el precio
     public void calculatePricePromotinal() {
 
+        System.out.println("Entro al metodo");
         Float totalPurchasePrice = 0.0f;
         Float totalSalesPrice = 0.0f;
 
         for (ProductsDetails detailsProduct : details) {
+            if (detailsProduct.getPrice() == null){
+                System.out.println("Precio NULL en detail ID: " + detailsProduct.id);
+            }
+
             totalSalesPrice += detailsProduct.getPrice().getSalesPrice();
             totalPurchasePrice += detailsProduct.getPrice().getPurchasePrice();
+
         }
 
         Float discountedPrice = totalSalesPrice * (1 - discount / 100);

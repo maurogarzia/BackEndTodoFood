@@ -43,7 +43,8 @@ public class BaseService <E>{
         try{
             return baseRepository.save(newEntity);
         }catch(Exception e){
-            throw new Exception(e.getMessage());
+            e.printStackTrace();
+            throw e;
         }
     }
 

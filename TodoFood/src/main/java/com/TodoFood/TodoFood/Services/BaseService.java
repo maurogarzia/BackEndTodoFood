@@ -1,5 +1,6 @@
 package com.TodoFood.TodoFood.Services;
 
+import com.TodoFood.TodoFood.Entities.PromotionDetails;
 import jakarta.transaction.Transactional;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Service;
@@ -8,7 +9,7 @@ import java.util.List;
 import java.util.Optional;
 
 
-public class BaseService <E>{
+public abstract class BaseService <E>{
     protected JpaRepository<E,Long> baseRepository;
 
     public BaseService(JpaRepository<E, Long> baseRepository){
@@ -74,5 +75,6 @@ public class BaseService <E>{
             throw new Exception(e.getMessage());
         }
     }
+
 
 }

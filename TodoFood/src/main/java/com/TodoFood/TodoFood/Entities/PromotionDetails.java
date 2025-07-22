@@ -15,17 +15,17 @@ public class PromotionDetails extends Base{
     @JoinColumn (name = "promocion_id")
     private Promotion promotion;
 
-    @ManyToOne
-    @JoinColumn(name = "precio_id")
-    private Price price;
+
+    @Column(name = "precio") // Deberia hacer una funcion para que se setee
+    private Float price;
 
     @ManyToMany
     @JoinTable(
-            name = "detallePromotion_detalleProducto",
+            name = "detalles_de_promocion",
             joinColumns = @JoinColumn(name = "detallePromocion_id"),
-            inverseJoinColumns = @JoinColumn(name = "productoDetalle_id")
+            inverseJoinColumns = @JoinColumn(name = "detalleUnitario_id")
     )
-    private List<ProductsDetails> productsDetails;
+    private List<UnitaryDetails> unitaryDetails;
 
     // Getters
 
@@ -33,7 +33,7 @@ public class PromotionDetails extends Base{
         return promotion;
     }
 
-    public Price getPrice() {
+    public Float getPrice() {
         return price;
     }
 
@@ -41,8 +41,8 @@ public class PromotionDetails extends Base{
         return discount;
     }
 
-    public List<ProductsDetails> getProductsDetails() {
-        return productsDetails;
+    public List<UnitaryDetails> getUnitaryDetails() {
+        return unitaryDetails;
     }
 
     // Setters
@@ -51,7 +51,7 @@ public class PromotionDetails extends Base{
         this.promotion = promotion;
     }
 
-    public void setPrice(Price price) {
+    public void setPrice(Float price) {
         this.price = price;
     }
 
@@ -59,7 +59,17 @@ public class PromotionDetails extends Base{
         this.discount = discount;
     }
 
-    public void setProductsDetails(List<ProductsDetails> productsDetails) {
-        this.productsDetails = productsDetails;
+    public void setUnitaryDetails(List<UnitaryDetails> unitaryDetails) {
+        this.unitaryDetails = unitaryDetails;
+    }
+
+    public void calculatePrice() {
+        float totalPrice = 0f;
+        for (UnitaryDetails details : unitaryDetails){
+            price = details.getProductDetails().getPrice() * details.getQuantity(); // Multiplico el precio del producto por su cantidad
+            totalPrice += price; // Se lo sumo al precio total
+        }
+        float finallyPrice = totalPrice - (totalPrice * (discount / 100)); // Precio final con el descuento
+        setPrice(finallyPrice       );
     }
 }

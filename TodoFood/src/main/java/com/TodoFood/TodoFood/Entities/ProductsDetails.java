@@ -11,9 +11,8 @@ public class ProductsDetails extends Base{
     @Column(name = "stock")
     private Integer stock;
 
-    @ManyToOne
-    @JoinColumn(name = "precio_id")
-    private Price price;
+    @Column(name = "precio")
+    private Float price;
 
     @ManyToOne
     @JoinColumn(name = "tamanio_id")
@@ -33,7 +32,7 @@ public class ProductsDetails extends Base{
         return stock;
     }
 
-    public Price getPrice() {
+    public Float getPrice() {
         return price;
     }
 
@@ -53,7 +52,7 @@ public class ProductsDetails extends Base{
         this.stock = stock;
     }
 
-    public void setPrice(Price price) {
+    public void setPrice(Float price) {
         this.price = price;
     }
 

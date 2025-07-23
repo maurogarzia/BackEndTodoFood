@@ -11,6 +11,9 @@ public class Branches extends Base {
     @Column(name = "nombre")
     private String name;
 
+    @Column(name = "numero_telefonico")
+    private Long number;
+
     @OneToOne
     @JoinColumn(name = "direccion_id")
     private Address address;
@@ -31,5 +34,13 @@ public class Branches extends Base {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public Long getNumber() {
+        return number;
+    }
+
+    public void setNumber(Long number) {
+        this.number = number;
     }
 }

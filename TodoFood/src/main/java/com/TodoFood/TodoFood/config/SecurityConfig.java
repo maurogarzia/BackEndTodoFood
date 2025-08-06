@@ -43,6 +43,7 @@ public class SecurityConfig {
                         .requestMatchers(HttpMethod.GET, "/todoFood/promotion/**").permitAll()
                         .requestMatchers(HttpMethod.GET, "/todoFood/product-details/**").permitAll()
                         .requestMatchers(HttpMethod.GET, "/todoFood/promotion-details/**").permitAll()
+                        .requestMatchers(HttpMethod.GET, "/todoFood/branches").permitAll()
 
                         // Todo lo demas requiere JWT
                         .anyRequest().authenticated()

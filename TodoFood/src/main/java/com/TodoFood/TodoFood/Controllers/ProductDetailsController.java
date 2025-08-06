@@ -25,10 +25,5 @@ public class ProductDetailsController extends BaseController<ProductsDetails>{
 
     }
 
-    // Filtra productos por categoria
-    @GetMapping("/by-category")
-    public ResponseEntity<List<ProductsDetails>> getByCategoryName(@RequestParam String name) throws Exception{
-        List<ProductsDetails> details = productDetailsService.findByCategory(name);
-        return ResponseEntity.ok(details);
-    }
+
 }

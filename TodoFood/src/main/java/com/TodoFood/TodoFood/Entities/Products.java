@@ -15,9 +15,16 @@ public class Products extends Base {
     @Column(name = "nombre")
     private String name;
 
+    @Column(name = "descripcion")
+    private String description;
+
     @ManyToOne
     @JoinColumn(name = "categoria_id")
     private Category category;
+
+    @ManyToOne
+    @JoinColumn(name = "imagen_id")
+    private Image image;
 
     //Getters y Setters
 
@@ -29,7 +36,13 @@ public class Products extends Base {
         return category;
     }
 
+    public String getDescription() {
+        return description;
+    }
 
+    public Image getImage() {
+        return image;
+    }
 
     public void setName(String name) {
         this.name = name;
@@ -39,5 +52,11 @@ public class Products extends Base {
         this.category = category;
     }
 
+    public void setDescription(String description) {
+        this.description = description;
+    }
 
+    public void setImage(Image image) {
+        this.image = image;
+    }
 }

@@ -20,15 +20,5 @@ public class ProductDetailsService extends BaseService<ProductsDetails>{
     }
 
 
-    // Filtra productos por categoria
-    @Transactional
-    public List<ProductsDetails>findByCategory(String name) throws Exception {
-        try{
-            return baseRepository.findAll().stream()
-                    .filter(d -> d.getProduct().getCategory().getName().equalsIgnoreCase(name))
-                    .toList();
-        }catch(Exception e){
-            throw new Exception(e.getMessage());
-        }
-    }
+
 }

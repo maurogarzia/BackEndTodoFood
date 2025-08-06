@@ -5,6 +5,7 @@ import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.Table;
+import jakarta.validation.constraints.NotBlank;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -16,16 +17,20 @@ public class User extends Base{
     private String name;
     @Column(name = "apellido")
     private String lastname;
-    @Column(name = "nombre_usuario")
-    private String username;
-    @Column(name = "contrasenia")
+
+    @NotBlank
+    @Column(nullable = false, unique = true,name = "nombre_usuario")
+    private String userName;
+
+    @NotBlank
+    @Column(nullable = false, name = "contrasenia")
     private String password;
+
     @Column(name = "rol")
     private Rol Rol;
+
     @Column(name = "email")
     private String email;
-    @Column(name = "dni")
-    private String dni;
 
     @JoinColumn(name = "direccion_id")
     private Address address;
@@ -48,12 +53,17 @@ public class User extends Base{
         return email;
     }
 
-    public String getDni() {
-        return dni;
-    }
 
     public Address getAddress() {
         return address;
+    }
+
+    public String getLastname() {
+        return lastname;
+    }
+
+    public String getUsername() {
+        return userName;
     }
 
     public void setName(String name) {
@@ -72,11 +82,16 @@ public class User extends Base{
         this.email = email;
     }
 
-    public void setDni(String dni) {
-        this.dni = dni;
-    }
 
     public void setAddress(Address address) {
         this.address = address;
+    }
+
+    public void setLastname(String lastname) {
+        this.lastname = lastname;
+    }
+
+    public void setUsername(String username) {
+        this.userName = username;
     }
 }

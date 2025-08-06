@@ -19,10 +19,6 @@ public class ProductsDetails extends Base{
     private Size size;
 
     @ManyToOne
-    @JoinColumn(name = "imagen_id")
-    private Image image;
-
-    @ManyToOne
     @JoinColumn(name = "producto_id")
     private Products product;
 
@@ -40,10 +36,6 @@ public class ProductsDetails extends Base{
         return size;
     }
 
-    public Image getImage() {
-        return image;
-    }
-
     public Products getProduct() {
         return product;
     }
@@ -58,10 +50,6 @@ public class ProductsDetails extends Base{
 
     public void setSize(Size size) {
         this.size = size;
-    }
-
-    public void setImage(Image image) {
-        this.image = image;
     }
 
     public void setProduct(Products product) {

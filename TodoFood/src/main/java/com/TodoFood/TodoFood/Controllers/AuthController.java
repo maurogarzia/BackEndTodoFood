@@ -70,7 +70,7 @@ public class AuthController {
 
             // Crea nuevo usuario
             User user = new User();
-            user.setUsername(reg.getName());
+            user.setName(reg.getName());
             user.setLastname(reg.getLastname());
             user.setUsername(reg.getUsername());
             user.setEmail(reg.getEmail());

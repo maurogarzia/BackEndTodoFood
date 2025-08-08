@@ -4,8 +4,8 @@ import com.TodoFood.TodoFood.Entities.enums.Rol;
 
 public class RegisterRequest {
     private String name;
-    private String lastName;
-    private String userName;
+    private String lastname;
+    private String username;
     private String password;
     private String role;
     private String email;
@@ -13,47 +13,45 @@ public class RegisterRequest {
     // Getters y Setters
 
 
-    public String getEmail() {
-        return email;
-    }
-
     public String getName() {
         return name;
     }
 
-    public String getLastName() {
-        return lastName;
+    public String getLastname() {
+        return lastname;
     }
 
-    public String getUserName() {
-        return userName;
+    public String getUsername() {
+        return username;
     }
 
     public String getPassword() {
         return password;
     }
 
-
     public String getRole() {
         return role;
+    }
+
+    public String getEmail() {
+        return email;
     }
 
     public void setName(String name) {
         this.name = name;
     }
 
-    public void setLastName(String lastName) {
-        this.lastName = lastName;
+    public void setLastname(String lastname) {
+        this.lastname = lastname;
     }
 
-    public void setUserName(String userName) {
-        this.userName = userName;
+    public void setUsername(String username) {
+        this.username = username;
     }
 
     public void setPassword(String password) {
         this.password = password;
     }
-
 
     public void setRole(String role) {
         this.role = role;

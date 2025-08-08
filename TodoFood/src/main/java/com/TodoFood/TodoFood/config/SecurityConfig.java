@@ -38,12 +38,16 @@ public class SecurityConfig {
                         .requestMatchers("/todoFood/auth/register").permitAll()
                         .requestMatchers("/todoFood/auth/login").permitAll()
 
+
                         // Permitir ver productos sin el token
                         .requestMatchers(HttpMethod.GET, "/todoFood/product/**").permitAll()
                         .requestMatchers(HttpMethod.GET, "/todoFood/promotion/**").permitAll()
                         .requestMatchers(HttpMethod.GET, "/todoFood/product-details/**").permitAll()
                         .requestMatchers(HttpMethod.GET, "/todoFood/promotion-details/**").permitAll()
                         .requestMatchers(HttpMethod.GET, "/todoFood/branches").permitAll()
+                        .requestMatchers(HttpMethod.GET, "/todoFood/size").permitAll()
+
+
 
                         // Todo lo demas requiere JWT
                         .anyRequest().authenticated()

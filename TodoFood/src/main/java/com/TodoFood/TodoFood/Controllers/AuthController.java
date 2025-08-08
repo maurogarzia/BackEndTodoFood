@@ -64,15 +64,15 @@ public class AuthController {
     public ResponseEntity<?> register (@RequestBody RegisterRequest reg) {
         try{
             // validar si el usuario ya existe
-            if (userRepository.findByUserName(reg.getUserName()).isPresent()) {
+            if (userRepository.findByUsername(reg.getUsername()).isPresent()) {
                 return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("El nombre de usuario ya esta registrado");
             }
 
             // Crea nuevo usuario
             User user = new User();
             user.setUsername(reg.getName());
-            user.setLastname(reg.getLastName());
-            user.setUsername(reg.getUserName());
+            user.setLastname(reg.getLastname());
+            user.setUsername(reg.getUsername());
             user.setEmail(reg.getEmail());
             user.setPassword(passwordEncoder.encode(reg.getPassword()));
 

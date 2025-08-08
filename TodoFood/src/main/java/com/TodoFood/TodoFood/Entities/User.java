@@ -6,8 +6,7 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.Table;
 import jakarta.validation.constraints.NotBlank;
-import lombok.Getter;
-import lombok.Setter;
+
 
 @Entity
 @Table(name = "Usuario")
@@ -17,10 +16,12 @@ public class User extends Base{
     private String name;
     @Column(name = "apellido")
     private String lastname;
+    @Column(name = "telefono")
+    private String phone;
 
     @NotBlank
     @Column(nullable = false, unique = true,name = "nombre_usuario")
-    private String userName;
+    private String username;
 
     @NotBlank
     @Column(nullable = false, name = "contrasenia")
@@ -37,8 +38,21 @@ public class User extends Base{
 
     //Getter y setter
 
+
     public String getName() {
         return name;
+    }
+
+    public String getLastname() {
+        return lastname;
+    }
+
+    public String getPhone() {
+        return phone;
+    }
+
+    public String getUsername() {
+        return username;
     }
 
     public String getPassword() {
@@ -53,21 +67,24 @@ public class User extends Base{
         return email;
     }
 
-
     public Address getAddress() {
         return address;
     }
 
-    public String getLastname() {
-        return lastname;
-    }
-
-    public String getUsername() {
-        return userName;
-    }
-
     public void setName(String name) {
         this.name = name;
+    }
+
+    public void setLastname(String lastname) {
+        this.lastname = lastname;
+    }
+
+    public void setPhone(String phone) {
+        this.phone = phone;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
     }
 
     public void setPassword(String password) {
@@ -82,16 +99,7 @@ public class User extends Base{
         this.email = email;
     }
 
-
     public void setAddress(Address address) {
         this.address = address;
-    }
-
-    public void setLastname(String lastname) {
-        this.lastname = lastname;
-    }
-
-    public void setUsername(String username) {
-        this.userName = username;
     }
 }

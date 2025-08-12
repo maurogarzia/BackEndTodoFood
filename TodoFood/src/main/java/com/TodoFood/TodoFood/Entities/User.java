@@ -1,10 +1,7 @@
 package com.TodoFood.TodoFood.Entities;
 
 import com.TodoFood.TodoFood.Entities.enums.Rol;
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
 
 
@@ -27,12 +24,14 @@ public class User extends Base{
     @Column(nullable = false, name = "contrasenia")
     private String password;
 
+    @Enumerated(EnumType.STRING)
     @Column(name = "rol")
     private Rol Rol;
 
     @Column(name = "email")
     private String email;
 
+    @OneToOne
     @JoinColumn(name = "direccion_id")
     private Address address;
 

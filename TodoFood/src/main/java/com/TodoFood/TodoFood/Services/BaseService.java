@@ -51,6 +51,7 @@ public abstract class BaseService <E>{
 
     @Transactional
     public E update (Long id, E newEntity) throws Exception {
+        System.out.println("Entro al update");
         try {
             if (baseRepository.existsById(id)){
                 return baseRepository.save(newEntity);

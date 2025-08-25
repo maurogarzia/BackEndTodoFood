@@ -47,8 +47,11 @@ public abstract class BaseController <E> {
         }
     }
 
+
+
     @PutMapping("/{id}")
     public ResponseEntity<E> update(@PathVariable Long id, @RequestBody E newEntity) {
+        System.out.println("Body recibido: " + newEntity);
         try {
             if (newEntity instanceof Base baseEntity){ // Si newEntity es una insatncia de base
                 baseEntity.setId(id); // Se fuerza el id del path

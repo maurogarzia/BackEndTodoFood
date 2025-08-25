@@ -26,7 +26,7 @@ public class User extends Base{
 
     @Enumerated(EnumType.STRING)
     @Column(name = "rol")
-    private Rol Rol;
+    private Rol role;
 
     @Column(name = "email")
     private String email;
@@ -58,8 +58,8 @@ public class User extends Base{
         return password;
     }
 
-    public Rol getRol() {
-        return Rol;
+    public Rol getRole() {
+        return role;
     }
 
     public String getEmail() {
@@ -90,8 +90,8 @@ public class User extends Base{
         this.password = password;
     }
 
-    public void setRol(Rol rol) {
-        Rol = rol;
+    public void setRole(Rol role) {
+        this.role = role;
     }
 
     public void setEmail(String email) {
@@ -100,5 +100,20 @@ public class User extends Base{
 
     public void setAddress(Address address) {
         this.address = address;
+    }
+
+
+    @Override
+    public String toString() {
+        return "User{" +
+                "id=" + id +
+                ", username='" + username + '\'' +
+                ", email='" + email + '\'' +
+                ", name='" + name + '\'' +
+                ", lastname='" + lastname + '\'' +
+                ", phone=" + phone +
+                ", role=" + role +
+                ", address=" + (address != null ? address.getId() : null) +
+                '}';
     }
 }

@@ -79,19 +79,19 @@ public class AuthController {
             String requiredRol = reg.getRole();
 
             if (requiredRol == null || requiredRol.trim().isEmpty()){
-                user.setRol(Rol.CUSTOMER); // Seteo customer por defecto
+                user.setRole(Rol.CUSTOMER); // Seteo customer por defecto
             } else if(requiredRol.equalsIgnoreCase("ADMIN")){
 
                 // Valido si el usuario tiene permisos
                 if (isAdminauthenticated()){
-                    user.setRol(Rol.ADMIN);
+                    user.setRole(Rol.ADMIN);
                 } else {
                     return ResponseEntity.status(HttpStatus.FORBIDDEN)
                             .body("NO tenes permisos para crear un usuario admin");
                 }
 
             } else {
-                user.setRol(Rol.CUSTOMER);
+                user.setRole(Rol.CUSTOMER);
             }
 
             userRepository.save(user);

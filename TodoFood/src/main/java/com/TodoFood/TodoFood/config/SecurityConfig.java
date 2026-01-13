@@ -32,20 +32,21 @@ public class SecurityConfig {
     UserService userService;
 
     @Bean
-    public SecurityFilterChain filterChain (HttpSecurity http) throws Exception{
+    public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
         return http
                 .csrf(csrf -> csrf.disable())
-                .cors(cors -> {})
-                .cors(cors -> cors.configurationSource(corsConfigurationSource())).cors(cors -> cors.configurationSource(corsConfigurationSource()))
-                .sessionManagement(sess -> sess.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
+                .cors(cors -> cors.configurationSource(corsConfigurationSource()))
+                .sessionManagement(sess ->
+                        sess.sessionCreationPolicy(SessionCreationPolicy.STATELESS)
+                )
                 .authorizeHttpRequests(auth -> auth
-                        // Permitir login y registro sin token
                         .requestMatchers(HttpMethod.OPTIONS, "/**").permitAll()
+
+                        // Auth
                         .requestMatchers("/todoFood/auth/register").permitAll()
                         .requestMatchers("/todoFood/auth/login").permitAll()
 
-
-                        // Permitir ver productos sin el token
+                        // Públicos
                         .requestMatchers(HttpMethod.GET, "/todoFood/product/**").permitAll()
                         .requestMatchers(HttpMethod.GET, "/todoFood/promotion/**").permitAll()
                         .requestMatchers(HttpMethod.GET, "/todoFood/product-details/**").permitAll()
@@ -53,11 +54,11 @@ public class SecurityConfig {
                         .requestMatchers(HttpMethod.GET, "/todoFood/branches").permitAll()
                         .requestMatchers(HttpMethod.GET, "/todoFood/size").permitAll()
 
-                        // Solo el admin puede cambiar la contrasenia
-                        .requestMatchers(HttpMethod.PUT, "/todoFood/user/*/password/admin").hasRole("ADMIN")
+                        // Admin
+                        .requestMatchers(HttpMethod.PUT, "/todoFood/user/*/password/admin")
+                        .hasRole("ADMIN")
 
-
-                        // Todo lo demas requiere JWT
+                        // Todo lo demás
                         .anyRequest().authenticated()
                 )
                 .userDetailsService(userService)
@@ -79,17 +80,19 @@ public class SecurityConfig {
     public CorsConfigurationSource corsConfigurationSource() {
         CorsConfiguration configuration = new CorsConfiguration();
 
-        // En dev: solo frontend local
-        configuration.setAllowedOrigins(List.of("http://localhost:5173"));
-        // Si querés abrir a todos en dev, usá: List.of("*")
-
-        configuration.setAllowedMethods(List.of("GET", "POST", "PUT", "PATCH", "DELETE", "OPTIONS"));
+        configuration.setAllowedOrigins(List.of("http://localhost:3000"));
+        configuration.setAllowedMethods(List.of(
+                "GET", "POST", "PUT", "PATCH", "DELETE", "OPTIONS"
+        ));
         configuration.setAllowedHeaders(List.of("*"));
-        configuration.setAllowCredentials(true); // si usás cookies o Authorization: Bearer
+        configuration.setExposedHeaders(List.of("Authorization"));
+        configuration.setAllowCredentials(true);
 
-        UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
+        UrlBasedCorsConfigurationSource source =
+                new UrlBasedCorsConfigurationSource();
         source.registerCorsConfiguration("/**", configuration);
         return source;
     }
+
 
 }

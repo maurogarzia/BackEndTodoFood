@@ -2,7 +2,7 @@
 
 **TodoFood** es una API RESTful desarrollada en **Java con Spring Boot**, que sirve como backend para una aplicación web de gestión de hamburguesas. Esta API permite manejar productos, ingredientes, promociones, categorías, pedidos y más.
 
-Está conectada a una base de datos **MySQL**, y está lista para integrarse con cualquier frontend (como React, Angular, etc).
+Está conectada a una base de datos **POSTGRES**, y está lista para integrarse con cualquier frontend (como React, Angular, etc).
 
 ---
 
@@ -11,7 +11,7 @@ Está conectada a una base de datos **MySQL**, y está lista para integrarse con
 - Java 17+
 - Spring Boot
 - Spring Data JPA
-- MySQL
+- POSTGRES
 - Gradle
 - Lombok
 
@@ -31,19 +31,34 @@ com.todofood.todofood
 
 ## 🗄️ Base de datos
 
-Esta API se conecta a una base de datos **MySQL**. Asegurate de tener corriendo un servidor MySQL con una base de datos creada (`TodoFood`).
+Esta API se conecta a una base de datos **POSTGRES**. Asegurate de tener corriendo un servidor MySQL con una base de datos creada (`TodoFood`).
 
 ### Configuración en `application.properties`:
 
 ```properties
-spring.datasource.url=jdbc:mysql://localhost:3306/todofood_db
-spring.datasource.username=root
-spring.datasource.password=tu_contraseña
+spring.application.name=${APP_NAME}
 
+# Configuracion PostgreSQL
+spring.datasource.url=${DB_URL}
+spring.datasource.username=${DB_USERNAME}
+spring.datasource.password=${DB_PASSWORD}
+spring.datasource.driver-class-name=org.postgresql.Driver
+
+# Configuracion de JPA/HIbernate
 spring.jpa.hibernate.ddl-auto=update
 spring.jpa.show-sql=true
-spring.jpa.properties.hibernate.dialect=org.hibernate.dialect.MySQL8Dialect
-server.port=9000
+spring.jpa.database-platform=org.hibernate.dialect.PostgreSQLDialect
+
+# Configuracion del servidor
+server.port=${PORT}
+
+# Cloudinary
+cloudinary.cloud.name=${CLOUD_NAME}
+cloudinary.api.key=${CLOUD_KEY}
+cloudinary.api.secret=${CLOUD_SECRET}
+
+# Clave de jwt
+jwt.secret.key=${JWT_SECRET}
 ```
 
 ▶️ Cómo correr el proyecto

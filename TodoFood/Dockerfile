@@ -1,15 +1,17 @@
 # =========================
-# STAGE 1: Build con Gradle
+# STAGE 1: Build
 # =========================
 FROM gradle:8.5-jdk17 AS builder
 WORKDIR /app
 
-# Copiamos archivos para cachear dependencias
 COPY build.gradle settings.gradle gradlew ./
 COPY gradle gradle
+
+
+RUN chmod +x gradlew
+
 RUN ./gradlew dependencies --no-daemon
 
-# Copiamos el resto del proyecto
 COPY . .
 RUN ./gradlew clean bootJar --no-daemon
 
@@ -21,7 +23,5 @@ WORKDIR /app
 
 COPY --from=builder /app/build/libs/*.jar app.jar
 
-# Render usa este puerto
 EXPOSE 8080
-
 ENTRYPOINT ["java","-jar","app.jar"]
